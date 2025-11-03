@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Εργασία Β'2 - Αρχική</title>
     <style>
-        /* CSS για τη μορφοποίηση της σελίδας */
+        /* 1. Ρυθμίσεις Σώματος */
         body {
             font-family: Arial, sans-serif;
             background-color: #FFFFFF; /* White */
@@ -17,22 +17,37 @@
             min-height: 100vh;
             margin: 0;
             text-align: center;
+            /* ΣΗΜΑΝΤΙΚΟ: Βάζουμε το body σε θέση relative για να είναι πάνω από το GIF */
+            position: relative;
+            z-index: 2; /* Το φέρνουμε πάνω από το GIF */
         }
 
-        h1 {
-            color: #89CFF0; /* Baby Blue */
-            font-size: 3em;
-            margin-bottom: 10px; 
-        }
-
-        .animation {
-            width: 200px; /* Μέγεθος κινούμενης εικόνας */
+        /* 2. Στυλ για το GIF πλήρους οθόνης */
+        .fullscreen-gif {
+            /* Τοποθετεί το GIF πίσω από τα πάντα και το σταθεροποιεί */
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
             height: auto;
-            margin-bottom: 20px;
-            border: 3px solid #89CFF0; 
-            border-radius: 10px; 
+            z-index: 1; /* Το κρατάμε πίσω από το κείμενο */
+            /* Διατηρεί τις αναλογίες και καλύπτει όλη την οθόνη */
+            object-fit: cover; 
+            filter: brightness(60%); /* Προαιρετικά: Σκοτείνιασμα για να φαίνονται τα γράμματα */
         }
 
+        /* 3. Στυλ για τον Τίτλο (πάνω από το GIF) */
+        h1 {
+            color: #FFFFFF; /* Αλλάζουμε το χρώμα του τίτλου σε ΛΕΥΚΟ για να φαίνεται στο σκοτεινό GIF */
+            font-size: 3em;
+            margin-bottom: 20px;
+            /* Το φέρνουμε πάνω από το GIF */
+            z-index: 3; 
+        }
+
+        /* 4. Στυλ για το Κουμπί (πάνω από το GIF) */
         .button {
             display: inline-block;
             padding: 15px 30px;
@@ -44,6 +59,8 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s;
+            /* Το φέρνουμε πάνω από το GIF */
+            z-index: 3; 
         }
 
         .button:hover {
@@ -52,10 +69,10 @@
     </style>
 </head>
 <body>
+    <img src="giphy.gif" alt="Full Screen Animation" class="fullscreen-gif">
+
     <h1>Εργασία Β’2</h1>
     
-    <img src="giphy.gif" alt="Κινούμενη Εικόνα Εργασίας" class="animation">
-
     <a href="page2.html" class="button">
         Πήγαινε στην Εργασία
     </a>
